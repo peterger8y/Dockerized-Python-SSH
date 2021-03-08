@@ -6,10 +6,11 @@ ARG USERPASS=sshpass
 
 # Apt update & apt install required packages
 # whois: required for mkpasswd
-RUN apt update && apt -y install openssh-server whois
+RUN apt update && apt -y install openssh-server whois && apt install sudo
 
 # Add a non-root user & set password
 RUN useradd -ms /bin/bash $USERNAME
+RUN sudo adduser $USERNAME sudo
 # Save username on a file ¿?¿?¿?¿?¿?
 #RUN echo "$USERNAME" > /.non-root-username
 
